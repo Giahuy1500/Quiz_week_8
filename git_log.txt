@@ -1,0 +1,119 @@
+commit a9534c6703723522fda2fdc4aa6beeec760b2743
+Author: Magevo <jackson.scown@icloud.com>
+Date:   Sun Sep 3 03:34:45 2023 +1000
+
+    Added Flowchart.io, updated it to Project plan, Fixed formatting in design and report documents ready for final checkovers and submission
+
+commit e7d990a80f20b823e9c2ed2e7ff4cda6fd48d256
+Author: Huy Liêu Gia <giahuy.lieu@griffith.edu.au>
+Date:   Sat Sep 2 18:51:54 2023 +1000
+
+    Update Software Design and System Components
+
+commit b04f64959cbca9a8e963a2d88e6d61a046cf3db7
+Author: Huy Liêu Gia <giahuy.lieu@griffith.edu.au>
+Date:   Sat Sep 2 12:49:18 2023 +1000
+
+    Update requirements
+
+commit 868db4ec744417096779b28aa0c4cfe58b8455bc
+Author: Huy Liêu Gia <giahuy.lieu@griffith.edu.au>
+Date:   Fri Sep 1 22:33:37 2023 +1000
+
+    Update system vision
+
+commit 1282c701b9e420196ca8e8ab2a97cf42e5ae5664
+Author: Huy Liêu Gia <giahuy.lieu@griffith.edu.au>
+Date:   Fri Sep 1 22:28:52 2023 +1000
+
+    Update system vision document
+
+commit 95854f130efdabaf581ba709995d454a75bf3ad5
+Author: Huy Liêu Gia <giahuy.lieu@griffith.edu.au>
+Date:   Fri Sep 1 22:15:45 2023 +1000
+
+    Update system vision
+
+commit 631b125087e56accf34e0d545056e1629c9e6764
+Author: Jackson Scown <s5143355@student.ad.griffith.edu.au>
+Date:   Fri Sep 1 14:44:25 2023 +1000
+
+    Updated project plan document to include WBS, Gantt Chart and Activity Definition Estimation
+
+commit 8d7d8ab45b9ecdd3c5ee13c047ba9c5d4b9d9c36
+Author: Georgia Platt <s5274996@student.ad.griffith.edu.au>
+Date:   Fri Sep 1 14:41:17 2023 +1000
+
+    Finished UI section
+
+commit 3ca7e683efb30cb78f9521a8f628c424b3df2047
+Author: Jackson Scown <s5143355@student.ad.griffith.edu.au>
+Date:   Fri Sep 1 13:27:00 2023 +1000
+
+    Actually updated the WBS
+
+commit b67f7f2f67225bcefff84a94fee51a1ef84e671a
+Author: Jackson Scown <s5143355@student.ad.griffith.edu.au>
+Date:   Fri Sep 1 13:20:53 2023 +1000
+
+    Added the updated Excel Gant Chart with the updated WBS draw.io
+
+commit 8bfdb8352753e5987dc28e3f30bba94fd412868d
+Author: Georgia Platt <s5274996@student.ad.griffith.edu.au>
+Date:   Fri Sep 1 13:09:03 2023 +1000
+
+    Updated UI section in SDD
+
+commit 361df2ff589b57cfb473d2fe049273c22abe40a1
+Author: Georgia Platt <s5274996@student.ad.griffith.edu.au>
+Date:   Fri Sep 1 11:44:25 2023 +1000
+
+    Completed user interface wireframes
+
+commit eb77830e414de9efdee08ddd1d23073f514ec5d2
+Author: Georgia <georgia.platt@griffithuni.edu.au>
+Date:   Thu Aug 31 14:42:28 2023 +1000
+
+    Added info for structural design plan in SDD
+
+commit cfc96bed16e5b7ffc5524366d82cb8408b52737b
+Author: Georgia <georgia.platt@griffithuni.edu.au>
+Date:   Thu Aug 31 12:29:31 2023 +1000
+
+    Updated WBS 31/08
+
+commit 8114302a5c1e1a5b22385d96341cad3673be9008
+Author: Magevo <jackson.scown@icloud.com>
+Date:   Fri Aug 25 18:33:08 2023 +1000
+
+    Added Marking Guide PDF and Task Delegation Excel
+
+commit 7ada9a9095d6efad8d67a3f6f8ce0d4afa2b7642
+Author: Jackson Scown <s5143355@student.ad.griffith.edu.au>
+Date:   Fri Aug 25 16:01:03 2023 +1000
+
+    Updated WBS
+
+commit 6c4e618c48a7b7474f86f9c14cec4ae4a43c8bc1
+Author: Georgia <georgia.platt@griffithuni.edu.au>
+Date:   Thu Aug 24 18:46:58 2023 +1000
+
+    Intro for Project Plan & WBS document made (Gia and Jackson to check)
+
+commit a9a50530aaea8b41a6e75d5c4d266476fd21f905
+Author: Georgia <georgia.platt@griffithuni.edu.au>
+Date:   Tue Aug 15 13:52:45 2023 +1000
+
+    Added dataset
+
+commit 2de6f8201390a0ee83c54ad20c07e37b901699b3
+Author: Georgia Platt <s5274996@student.ad.griffith.edu.au>
+Date:   Fri Aug 4 15:30:21 2023 +1000
+
+    Deleted test files
+
+commit 8aa857d0b1b1af0e62295f53eb202f5754259719
+Author: Jackson Scown <s5143355@student.ad.griffith.edu.au>
+Date:   Fri Aug 4 15:27:34 2023 +1000
+
+    Updated Executive Summary
