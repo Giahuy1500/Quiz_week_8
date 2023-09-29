@@ -18,7 +18,7 @@ import wx.grid
 class MyFrame5 ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 564,424 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 640,630 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -35,13 +35,6 @@ class MyFrame5 ( wx.Frame ):
 
 		bSizer31 = wx.BoxSizer( wx.VERTICAL )
 
-		self.SSI_price_sort = wx.StaticText( self, wx.ID_ANY, u"Suburbs Sorted by Price:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.SSI_price_sort.Wrap( -1 )
-
-		self.SSI_price_sort.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Arial" ) )
-
-		bSizer31.Add( self.SSI_price_sort, 0, wx.ALL, 5 )
-
 		bSizer33 = wx.BoxSizer( wx.HORIZONTAL )
 
 		self.SSI_property_label = wx.StaticText( self, wx.ID_ANY, u"Property Type:", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -49,8 +42,12 @@ class MyFrame5 ( wx.Frame ):
 
 		bSizer33.Add( self.SSI_property_label, 0, wx.ALL, 5 )
 
-		self.SSI_property_text = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer33.Add( self.SSI_property_text, 0, wx.ALL, 5 )
+		SSI_property_type_dropdownChoices = []
+		self.SSI_property_type_dropdown = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, SSI_property_type_dropdownChoices, 0 )
+		self.SSI_property_type_dropdown.SetSelection( 0 )
+		self.SSI_property_type_dropdown.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+
+		bSizer33.Add( self.SSI_property_type_dropdown, 0, wx.ALL, 5 )
 
 
 		bSizer31.Add( bSizer33, 1, wx.EXPAND, 5 )
@@ -62,25 +59,35 @@ class MyFrame5 ( wx.Frame ):
 
 		bSizer34.Add( self.SSI_room_label, 0, wx.ALL, 5 )
 
-		self.SSI_room_text = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.SSI_room_text.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+		SSI_room_type_dropdownChoices = []
+		self.SSI_room_type_dropdown = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, SSI_room_type_dropdownChoices, 0 )
+		self.SSI_room_type_dropdown.SetSelection( 0 )
+		self.SSI_room_type_dropdown.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
 
-		bSizer34.Add( self.SSI_room_text, 0, wx.ALL, 5 )
+		bSizer34.Add( self.SSI_room_type_dropdown, 0, wx.ALL, 5 )
 
 
 		bSizer31.Add( bSizer34, 1, wx.EXPAND, 5 )
 
-		self.SS_search_button = wx.Button( self, wx.ID_ANY, u"Search", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer31.Add( self.SS_search_button, 0, wx.ALL, 5 )
+		self.SSI_search_button = wx.Button( self, wx.ID_ANY, u"Search", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer31.Add( self.SSI_search_button, 0, wx.ALL, 5 )
 
-		self.SSI_grid_price_sort = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.SSI_price_sort = wx.StaticText( self, wx.ID_ANY, u"Suburbs Sorted by Price:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.SSI_price_sort.Wrap( -1 )
+
+		self.SSI_price_sort.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Arial" ) )
+
+		bSizer31.Add( self.SSI_price_sort, 0, wx.ALL, 5 )
+
+		self.SSI_grid_price_sort = wx.grid.Grid(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(300, 400), 0)
 
 		# Grid
-		self.SSI_grid_price_sort.CreateGrid( 10, 2 )
+		self.SSI_grid_price_sort.CreateGrid( 20, 2 )
 		self.SSI_grid_price_sort.EnableEditing( True )
 		self.SSI_grid_price_sort.EnableGridLines( True )
 		self.SSI_grid_price_sort.EnableDragGridSize( False )
 		self.SSI_grid_price_sort.SetMargins( 0, 0 )
+		self.SSI_grid_price_sort.SetColSize(0, 120)
 
 		# Columns
 		self.SSI_grid_price_sort.EnableDragColMove( False )
@@ -109,14 +116,15 @@ class MyFrame5 ( wx.Frame ):
 
 		bSizer32.Add( self.SSI_rating_sort, 0, wx.ALL, 5 )
 
-		self.SSI_grid_rating_sort = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.SSI_grid_rating_sort = wx.grid.Grid(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(300, 550), 0)
 
 		# Grid
-		self.SSI_grid_rating_sort.CreateGrid( 15, 2 )
+		self.SSI_grid_rating_sort.CreateGrid( 30, 2 )
 		self.SSI_grid_rating_sort.EnableEditing( True )
 		self.SSI_grid_rating_sort.EnableGridLines( True )
 		self.SSI_grid_rating_sort.EnableDragGridSize( False )
 		self.SSI_grid_rating_sort.SetMargins( 0, 0 )
+		self.SSI_grid_rating_sort.SetColSize(0, 120)
 
 		# Columns
 		self.SSI_grid_rating_sort.EnableDragColMove( False )
