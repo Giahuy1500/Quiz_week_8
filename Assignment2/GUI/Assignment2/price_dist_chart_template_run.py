@@ -9,9 +9,14 @@ data['price'] = data['price'].str.replace('$', '').str.replace(',', '').astype(f
 price_data = data['price'].unique()
 price_data.sort()
 
-suburb_data = data['city']
-suburb_data_dropdown = data['city'].astype(str).unique()
-suburb_data_dropdown = [x.strip() for x in suburb_data_dropdown]
+data['city'] = data['city'].str.strip()
+suburb_data_dropdown = data['city'].astype(str)
+suburb_data_dropdown = suburb_data_dropdown.str.replace(',', '')
+suburb_data_dropdown = suburb_data_dropdown.str.replace(' Sydney', '')
+suburb_data_dropdown = suburb_data_dropdown.str.replace(' New South Wales AU', '')
+suburb_data_dropdown = suburb_data_dropdown.str.replace(' NSW', '')
+suburb_data_dropdown = [x.strip().title() for x in suburb_data_dropdown if not any(char.isdigit() for char in x)]
+suburb_data_dropdown = list(set(suburb_data_dropdown))
 suburb_data_dropdown.sort()
 
 property_data = data['property_type']
@@ -81,3 +86,5 @@ if __name__ == "__main__":
     app = wx.App(False)
     frame = CalcFrame()
     app.MainLoop()
+
+
