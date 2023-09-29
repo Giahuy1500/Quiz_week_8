@@ -18,7 +18,7 @@ import wx.grid
 class MyFrame5 ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 640,630 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 700,630 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -79,7 +79,7 @@ class MyFrame5 ( wx.Frame ):
 
 		bSizer31.Add( self.SSI_price_sort, 0, wx.ALL, 5 )
 
-		self.SSI_grid_price_sort = wx.grid.Grid(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(300, 400), 0)
+		self.SSI_grid_price_sort = wx.grid.Grid(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(330, 400), 0)
 
 		# Grid
 		self.SSI_grid_price_sort.CreateGrid( 20, 2 )
@@ -87,7 +87,7 @@ class MyFrame5 ( wx.Frame ):
 		self.SSI_grid_price_sort.EnableGridLines( True )
 		self.SSI_grid_price_sort.EnableDragGridSize( False )
 		self.SSI_grid_price_sort.SetMargins( 0, 0 )
-		self.SSI_grid_price_sort.SetColSize(0, 120)
+		self.SSI_grid_price_sort.SetColSize(0, 150)
 
 		# Columns
 		self.SSI_grid_price_sort.EnableDragColMove( False )
@@ -116,7 +116,7 @@ class MyFrame5 ( wx.Frame ):
 
 		bSizer32.Add( self.SSI_rating_sort, 0, wx.ALL, 5 )
 
-		self.SSI_grid_rating_sort = wx.grid.Grid(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(300, 550), 0)
+		self.SSI_grid_rating_sort = wx.grid.Grid(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(330, 550), 0)
 
 		# Grid
 		self.SSI_grid_rating_sort.CreateGrid( 30, 2 )
@@ -124,7 +124,7 @@ class MyFrame5 ( wx.Frame ):
 		self.SSI_grid_rating_sort.EnableGridLines( True )
 		self.SSI_grid_rating_sort.EnableDragGridSize( False )
 		self.SSI_grid_rating_sort.SetMargins( 0, 0 )
-		self.SSI_grid_rating_sort.SetColSize(0, 120)
+		self.SSI_grid_rating_sort.SetColSize(0, 150)
 
 		# Columns
 		self.SSI_grid_rating_sort.EnableDragColMove( False )

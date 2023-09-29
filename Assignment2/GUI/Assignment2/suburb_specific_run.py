@@ -6,8 +6,11 @@ import pandas as pd
 
 data = pd.read_csv('listings_dec18.csv')
 
+# Clean up data (commas, Sydney, NSW, etc.)
 data['city'] = data['city'].str.strip()
-suburb_data = data['city'].unique()
+data['city'] = data['city'].str.replace(',', '').str.replace(' Sydney', '').str.replace(' New South Wales AU', '').str.replace(' NSW', '')
+data['city'] = data['city'].str.lower().str.title()
+suburb_data = data['city'].astype(str).unique()
 
 data['price'] = data['price'].str.replace('$', '').str.replace(',', '').astype(float)
 price_data = data['price'].unique()
