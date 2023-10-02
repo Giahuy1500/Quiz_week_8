@@ -40,6 +40,13 @@ class CalcFrame(MyFrame1):
         self.Bind(wx.EVT_CHOICE, self.on_room_type_choice, self.SSI_room_type_dropdown)
         self.Bind(wx.EVT_BUTTON, self.on_search_button_click, self.SSI_search_button)
 
+        # Column labels
+        self.SSI_grid_price_sort.SetColLabelValue(0, "Suburb")
+        self.SSI_grid_price_sort.SetColLabelValue(1, "Avg Price")
+
+        self.SSI_grid_rating_sort.SetColLabelValue(0, "Suburb")
+        self.SSI_grid_rating_sort.SetColLabelValue(1, "Avg Rating")
+
     def on_property_type_choice(self, event):
         self.filter_changed = True
 
@@ -78,10 +85,6 @@ class CalcFrame(MyFrame1):
         # Clear existing grid data
         self.SSI_grid_price_sort.ClearGrid()
 
-        # Column labels
-        self.SSI_grid_price_sort.SetColLabelValue(0, "Suburb")
-        self.SSI_grid_price_sort.SetColLabelValue(1, "Avg Price")
-
         # Set the number of rows in the grid to match the number of suburbs
         num_suburbs = len(avg_prices)
         self.SSI_grid_price_sort.DeleteRows(numRows=self.SSI_grid_price_sort.GetNumberRows())
@@ -94,10 +97,6 @@ class CalcFrame(MyFrame1):
 
     def populate_rating_grid(self, avg_ratings):
         self.SSI_grid_rating_sort.ClearGrid()
-
-        # Column labels
-        self.SSI_grid_rating_sort.SetColLabelValue(0, "Suburb")
-        self.SSI_grid_rating_sort.SetColLabelValue(1, "Avg Rating")
 
         # Set the number of rows in the grid to match the number of suburbs
         num_suburbs = len(avg_ratings)

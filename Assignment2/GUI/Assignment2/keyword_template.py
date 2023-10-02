@@ -18,7 +18,7 @@ import wx.grid
 class MyFrame4 ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 900,500 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1430,700 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -102,14 +102,25 @@ class MyFrame4 ( wx.Frame ):
 
 		bSizer28 = wx.BoxSizer( wx.VERTICAL )
 
-		self.KS_grid = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.KS_grid = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size(1420, 650), 0 )
 
 		# Grid
-		self.KS_grid.CreateGrid( 20, 10 )
+		self.KS_grid.CreateGrid( 30, 10 )
 		self.KS_grid.EnableEditing( True )
 		self.KS_grid.EnableGridLines( True )
 		self.KS_grid.EnableDragGridSize( False )
 		self.KS_grid.SetMargins( 0, 0 )
+
+		self.KS_grid.SetColSize(0, 150)
+		self.KS_grid.SetColSize(1, 150)
+		self.KS_grid.SetColSize(2, 75)
+		self.KS_grid.SetColSize(3, 75)
+		self.KS_grid.SetColSize(4, 75)
+		self.KS_grid.SetColSize(5, 75)
+		self.KS_grid.SetColSize(6, 100)
+		self.KS_grid.SetColSize(7, 250)
+		self.KS_grid.SetColSize(8, 280)
+		self.KS_grid.SetColSize(9, 75)
 
 		# Columns
 		self.KS_grid.EnableDragColMove( False )
