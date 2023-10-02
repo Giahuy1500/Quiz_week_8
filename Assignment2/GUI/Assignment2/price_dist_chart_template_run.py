@@ -3,88 +3,86 @@ from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
 from matplotlib.figure import Figure
 import pandas as pd
 
-data = pd.read_csv('listings_dec18.csv')
 
-data['price'] = data['price'].str.replace('$', '').str.replace(',', '').astype(float)
-price_data = data['price'].unique()
-price_data.sort()
+def run_price_distribution_chart():
+    data = pd.read_csv('listings_dec18.csv')
 
-data['city'] = data['city'].str.strip()
-suburb_data_dropdown = data['city'].astype(str)
-suburb_data_dropdown = suburb_data_dropdown.str.replace(',', '')
-suburb_data_dropdown = suburb_data_dropdown.str.replace(' Sydney', '')
-suburb_data_dropdown = suburb_data_dropdown.str.replace(' New South Wales AU', '')
-suburb_data_dropdown = suburb_data_dropdown.str.replace(' NSW', '')
-suburb_data_dropdown = [x.strip().title() for x in suburb_data_dropdown if not any(char.isdigit() for char in x)]
-suburb_data_dropdown = list(set(suburb_data_dropdown))
-suburb_data_dropdown.sort()
+    data['price'] = data['price'].str.replace('$', '').str.replace(',', '').astype(float)
+    price_data = data['price'].unique()
+    price_data.sort()
 
-property_data = data['property_type']
-property_data_dropdown = data['property_type'].unique()
+    data['city'] = data['city'].str.strip()
+    suburb_data_dropdown = data['city'].astype(str)
+    suburb_data_dropdown = suburb_data_dropdown.str.replace(',', '')
+    suburb_data_dropdown = suburb_data_dropdown.str.replace(' Sydney', '')
+    suburb_data_dropdown = suburb_data_dropdown.str.replace(' New South Wales AU', '')
+    suburb_data_dropdown = suburb_data_dropdown.str.replace(' NSW', '')
+    suburb_data_dropdown = [x.strip().title() for x in suburb_data_dropdown if not any(char.isdigit() for char in x)]
+    suburb_data_dropdown = list(set(suburb_data_dropdown))
+    suburb_data_dropdown.sort()
 
-room_data = data['room_type']
-room_data_dropdown = data['room_type'].unique()
+    property_data = data['property_type']
+    property_data_dropdown = data['property_type'].unique()
 
-from price_dist_chart_template import MyFrame3 as MyFrame1
+    room_data = data['room_type']
+    room_data_dropdown = data['room_type'].unique()
 
-class CalcFrame(MyFrame1):
-    def __init__(self, parent=None):
-        super().__init__(parent)
+    from price_dist_chart_template import MyFrame3 as MyFrame1
 
-        self.PDC_property_dropdown.SetItems(property_data_dropdown)
-        self.PDC_room_dropdown.SetItems(room_data_dropdown)
-        self.PDC_suburb_dropdown.SetItems(suburb_data_dropdown)
+    class CalcFrame(MyFrame1):
+        def __init__(self, parent=None):
+            super().__init__(parent)
 
-        self.figure_score = Figure()
-        self.axes = self.figure_score.add_subplot(111)
-        self.canvas = FigureCanvasWxAgg(self.PDC_graph, -1, self.figure_score)
-        self.canvas.Hide()  # Initially hide the canvas
+            self.PDC_property_dropdown.SetItems(property_data_dropdown)
+            self.PDC_room_dropdown.SetItems(room_data_dropdown)
+            self.PDC_suburb_dropdown.SetItems(suburb_data_dropdown)
 
-        self.Layout()
-        self.Show(True)
+            self.figure_score = Figure()
+            self.axes = self.figure_score.add_subplot(111)
+            self.canvas = FigureCanvasWxAgg(self.PDC_graph, -1, self.figure_score)
+            self.canvas.Hide()  # Initially hide the canvas
 
-        self.Bind(wx.EVT_CHOICE, self.on_property_type_choice, self.PDC_property_dropdown)
-        self.Bind(wx.EVT_CHOICE, self.on_room_type_choice, self.PDC_room_dropdown)
-        self.Bind(wx.EVT_CHOICE, self.on_suburb_choice, self.PDC_suburb_dropdown)
+            self.Layout()
+            self.Show(True)
 
-        # track if a filter has changed
-        self.filter_changed = False
+            self.Bind(wx.EVT_CHOICE, self.on_property_type_choice, self.PDC_property_dropdown)
+            self.Bind(wx.EVT_CHOICE, self.on_room_type_choice, self.PDC_room_dropdown)
+            self.Bind(wx.EVT_CHOICE, self.on_suburb_choice, self.PDC_suburb_dropdown)
 
-    def PDC_search(self, event):
-        if self.filter_changed:
-            self.plot_data_line()
+            # track if a filter has changed
             self.filter_changed = False
 
-    def on_property_type_choice(self, event):
-        self.filter_changed = True
+        def PDC_search(self, event):
+            if self.filter_changed:
+                self.plot_data_line()
+                self.filter_changed = False
 
-    def on_room_type_choice(self, event):
-        self.filter_changed = True
+        def on_property_type_choice(self, event):
+            self.filter_changed = True
 
-    def on_suburb_choice(self, event):
-        self.filter_changed = True
+        def on_room_type_choice(self, event):
+            self.filter_changed = True
 
-    def plot_data_line(self):
-        selected_property = self.PDC_property_dropdown.GetStringSelection()
-        selected_room = self.PDC_room_dropdown.GetStringSelection()
-        selected_suburb = self.PDC_suburb_dropdown.GetStringSelection()
+        def on_suburb_choice(self, event):
+            self.filter_changed = True
 
-        filtered_data = data[(data['property_type'] == selected_property) & (data['room_type'] == selected_room) & (data['city'] == selected_suburb)]
+        def plot_data_line(self):
+            selected_property = self.PDC_property_dropdown.GetStringSelection()
+            selected_room = self.PDC_room_dropdown.GetStringSelection()
+            selected_suburb = self.PDC_suburb_dropdown.GetStringSelection()
 
-        self.axes.clear()  # Clear previous plot
-        x_series = pd.Series(filtered_data['price'])
-        self.axes.bar(range(len(x_series)), x_series)
-        self.axes.set_title(f'Price Distribution for {selected_property}s in {selected_suburb} ({selected_room})')
-        self.axes.set_ylabel('Price')
-        self.axes.set_xlabel('No. of Listings')
+            filtered_data = data[(data['property_type'] == selected_property) & (data['room_type'] == selected_room) & (data['city'] == selected_suburb)]
 
-        # Refresh the canvas
-        self.canvas.draw_idle()
-        self.canvas.Show()
+            self.axes.clear()  # Clear previous plot
+            x_series = pd.Series(filtered_data['price'])
+            self.axes.bar(range(len(x_series)), x_series)
+            self.axes.set_title(f'Price Distribution for {selected_property}s in {selected_suburb} ({selected_room})')
+            self.axes.set_ylabel('Price')
+            self.axes.set_xlabel('No. of Listings')
 
-if __name__ == "__main__":
-    app = wx.App(False)
-    frame = CalcFrame()
-    app.MainLoop()
+            # Refresh the canvas
+            self.canvas.draw_idle()
+            self.canvas.Show()
 
+    return CalcFrame()
 
