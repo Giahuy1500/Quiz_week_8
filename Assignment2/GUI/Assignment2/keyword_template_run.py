@@ -49,7 +49,6 @@ def run_keyword_search():
         "Cold", "Hot", "Temperature", "Climate", "Air"
     ]
 
-
     def get_filter_for_keywords(keywords):
         pattern = '|'.join('(?<![a-zA-Z])' + keyword + '(?![a-zA-Z])' for keyword in keywords)
         return merged_data['comments'].str.contains(pattern, case=False, na=False, regex=True)

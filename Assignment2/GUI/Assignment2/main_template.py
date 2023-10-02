@@ -9,6 +9,7 @@
 
 import wx
 import wx.xrc
+import wx.adv
 import wx.grid
 
 ###########################################################################
@@ -18,7 +19,7 @@ import wx.grid
 class MyFrame1 ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 815,597 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1192,657 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -44,6 +45,30 @@ class MyFrame1 ( wx.Frame ):
 		self.suburb_text.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
 
 		top_selection.Add( self.suburb_text, 0, wx.ALL, 5 )
+
+		self.date_label = wx.StaticText( self, wx.ID_ANY, u"Date Range: ", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.date_label.Wrap( -1 )
+
+		self.date_label.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+
+		top_selection.Add( self.date_label, 0, wx.ALL, 5 )
+
+		self.date1 = wx.adv.DatePickerCtrl( self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		self.date1.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+
+		top_selection.Add( self.date1, 0, wx.ALL, 5 )
+
+		self.date_to = wx.StaticText( self, wx.ID_ANY, u"to", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.date_to.Wrap( -1 )
+
+		self.date_to.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+
+		top_selection.Add( self.date_to, 0, wx.ALL, 5 )
+
+		self.date2 = wx.adv.DatePickerCtrl( self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		self.date2.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+
+		top_selection.Add( self.date2, 0, wx.ALL, 5 )
 
 		self.search_button = wx.Button( self, wx.ID_ANY, u"Search", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.search_button.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
@@ -288,6 +313,15 @@ class MyFrame1 ( wx.Frame ):
 
 	def min_rating_checkbox( self, event ):
 		event.Skip()
+
+
+
+
+
+
+
+
+
 
 	def mainApply( self, event ):
 		event.Skip()
