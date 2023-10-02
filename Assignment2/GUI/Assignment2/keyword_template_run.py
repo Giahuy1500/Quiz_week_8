@@ -34,7 +34,7 @@ pool_keywords = [
 # Keywords for parking
 parking_keywords = [
     "Parking", "Garage", "Carport", "Vehicle", "Bike", "Automobile", "Parked",
-    "Driveway", "Car", "Van", "Bus"
+    "Driveway", "Car", "Van"
 ]
 
 # Keywords for Wi-Fi
@@ -48,6 +48,18 @@ air_conditioning_keywords = [
     "Air conditioning", "Aircon", "AC", "A/C", "Heating", "Cooling", "Fans",
     "Cold", "Hot", "Temperature", "Climate", "Air"
 ]
+
+
+def get_filter_for_keywords(keywords):
+    pattern = '|'.join('(?<![a-zA-Z])' + keyword + '(?![a-zA-Z])' for keyword in keywords)
+    return merged_data['comments'].str.contains(pattern, case=False, na=False, regex=True)
+
+
+cleanliness_filter = get_filter_for_keywords(cleanliness_keywords)
+pool_filter = get_filter_for_keywords(pool_keywords)
+parking_filter = get_filter_for_keywords(parking_keywords)
+wifi_filter = get_filter_for_keywords(wifi_keywords)
+air_conditioning_filter = get_filter_for_keywords(air_conditioning_keywords)
 
 from keyword_template import MyFrame4 as MyFrame1
 
@@ -66,6 +78,47 @@ class CalcFrame(MyFrame1):
         self.KS_grid.SetColLabelValue(7, "Amenities")
         self.KS_grid.SetColLabelValue(8, "Reviews")
         self.KS_grid.SetColLabelValue(9, "Superhost")
+
+    def KS_Search(self, event):
+        filtered_data = merged_data
+
+        keyword = self.KS_keyword_text.GetValue()
+
+        if keyword.strip():
+            keyword_filter = merged_data['comments'].str.contains(keyword, case=False, na=False, regex=True)
+            filtered_data = merged_data[keyword_filter]
+
+        if self.KS_cleanliness_tick.IsChecked():
+            filtered_data = filtered_data[cleanliness_filter]
+
+        if self.KS_pool_tick.IsChecked():
+            filtered_data = filtered_data[pool_filter]
+
+        if self.KS_wifi_tick.IsChecked():
+            filtered_data = filtered_data[wifi_filter]
+
+        if self.KS_Parking_tick.IsChecked():
+            filtered_data = filtered_data[parking_filter]
+
+        if self.KS_ac_tick.IsChecked():
+            filtered_data = filtered_data[air_conditioning_filter]
+
+        self.KS_grid.DeleteRows(0, self.KS_grid.GetNumberRows(), True)
+        self.KS_grid.AppendRows(len(filtered_data))
+
+        for i, (index, row) in enumerate(filtered_data.iterrows()):
+
+            self.KS_grid.SetCellValue(i, 0, str(row['name']))
+            self.KS_grid.SetCellValue(i, 1, str(row['property_type']))
+            self.KS_grid.SetCellValue(i, 2, str(row['bedrooms']))
+            self.KS_grid.SetCellValue(i, 3, str(row['bathrooms']))
+            self.KS_grid.SetCellValue(i, 4, str(row['accommodates']))
+            self.KS_grid.SetCellValue(i, 5, str(row['review_scores_value']))
+            self.KS_grid.SetCellValue(i, 6, str(row['price']))
+            self.KS_grid.SetCellValue(i, 7, str(row['amenities']))
+            self.KS_grid.SetCellValue(i, 8, str(row['comments']))
+            self.KS_grid.SetCellValue(i, 9, str(row['host_is_superhost']))
+
 
 
 if __name__ == "__main__":

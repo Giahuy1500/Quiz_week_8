@@ -18,7 +18,7 @@ import wx.grid
 class MyFrame4 ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1430,700 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 947,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -80,6 +80,16 @@ class MyFrame4 ( wx.Frame ):
 
 		bSizer27.Add( self.KS_wifi_tick, 0, wx.ALL, 5 )
 
+		self.KS_Parking_label = wx.StaticText( self, wx.ID_ANY, u"Parking", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.KS_Parking_label.Wrap( -1 )
+
+		self.KS_Parking_label.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Arial" ) )
+
+		bSizer27.Add( self.KS_Parking_label, 0, wx.ALL, 5 )
+
+		self.KS_Parking_tick = wx.CheckBox( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer27.Add( self.KS_Parking_tick, 0, wx.ALL, 5 )
+
 		self.KS_ac_label = wx.StaticText( self, wx.ID_ANY, u"Air-Conditioning:", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.KS_ac_label.Wrap( -1 )
 
@@ -102,25 +112,14 @@ class MyFrame4 ( wx.Frame ):
 
 		bSizer28 = wx.BoxSizer( wx.VERTICAL )
 
-		self.KS_grid = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size(1420, 650), 0 )
+		self.KS_grid = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.KS_grid.CreateGrid( 30, 10 )
+		self.KS_grid.CreateGrid( 20, 10 )
 		self.KS_grid.EnableEditing( True )
 		self.KS_grid.EnableGridLines( True )
 		self.KS_grid.EnableDragGridSize( False )
 		self.KS_grid.SetMargins( 0, 0 )
-
-		self.KS_grid.SetColSize(0, 150)
-		self.KS_grid.SetColSize(1, 150)
-		self.KS_grid.SetColSize(2, 75)
-		self.KS_grid.SetColSize(3, 75)
-		self.KS_grid.SetColSize(4, 75)
-		self.KS_grid.SetColSize(5, 75)
-		self.KS_grid.SetColSize(6, 100)
-		self.KS_grid.SetColSize(7, 250)
-		self.KS_grid.SetColSize(8, 280)
-		self.KS_grid.SetColSize(9, 75)
 
 		# Columns
 		self.KS_grid.EnableDragColMove( False )
@@ -150,6 +149,7 @@ class MyFrame4 ( wx.Frame ):
 		self.KS_cleanliness_tick.Bind( wx.EVT_CHECKBOX, self.cleanliness_ticked )
 		self.KS_pool_tick.Bind( wx.EVT_CHECKBOX, self.pool_ticked )
 		self.KS_wifi_tick.Bind( wx.EVT_CHECKBOX, self.wifi_ticked )
+		self.KS_Parking_tick.Bind( wx.EVT_CHECKBOX, self.parking_ticked )
 		self.KS_ac_tick.Bind( wx.EVT_CHECKBOX, self.ac_ticked )
 		self.KS_search_button.Bind( wx.EVT_BUTTON, self.KS_Search )
 
@@ -167,10 +167,10 @@ class MyFrame4 ( wx.Frame ):
 	def wifi_ticked( self, event ):
 		event.Skip()
 
-	def ac_ticked( self, event ):
+	def parking_ticked( self, event ):
 		event.Skip()
 
-	def KS_Search( self, event ):
+	def ac_ticked( self, event ):
 		event.Skip()
 
 
