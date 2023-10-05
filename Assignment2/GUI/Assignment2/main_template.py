@@ -19,7 +19,7 @@ import wx.grid
 class MyFrame1 ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1192,657 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1375,610 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -245,10 +245,10 @@ class MyFrame1 ( wx.Frame ):
 
 		data_display = wx.BoxSizer( wx.VERTICAL )
 
-		self.main_data_grid = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.main_data_grid = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size(1075, 600), 0 )
 
 		# Grid
-		self.main_data_grid.CreateGrid( 22, 8 )
+		self.main_data_grid.CreateGrid( 50, 8 )
 		self.main_data_grid.EnableEditing( True )
 		self.main_data_grid.EnableGridLines( True )
 		self.main_data_grid.EnableDragGridSize( False )
@@ -269,6 +269,14 @@ class MyFrame1 ( wx.Frame ):
 		self.main_data_grid.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
 		data_display.Add( self.main_data_grid, 0, wx.ALL, 5 )
 
+		self.main_data_grid.SetColSize(0, 300)
+		self.main_data_grid.SetColSize(1, 150)
+		self.main_data_grid.SetColSize(2, 150)
+		self.main_data_grid.SetColSize(3, 75)
+		self.main_data_grid.SetColSize(4, 75)
+		self.main_data_grid.SetColSize(5, 75)
+		self.main_data_grid.SetColSize(6, 75)
+		self.main_data_grid.SetColSize(7, 75)
 
 		bSizer4.Add( data_display, 1, wx.EXPAND, 5 )
 

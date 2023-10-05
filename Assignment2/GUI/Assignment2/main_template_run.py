@@ -24,9 +24,11 @@ superhost = listing_data['host_is_superhost']
 
 property_data = listing_data['property_type']
 property_data_dropdown = listing_data['property_type'].unique()
+property_data_dropdown = [str(item) for item in property_data_dropdown]
 
 room_data = listing_data['room_type']
 room_data_dropdown = listing_data['room_type'].unique()
+room_data_dropdown = [str(item) for item in room_data_dropdown]
 
 
 class CalcFrame(MyFrame1):
@@ -36,7 +38,7 @@ class CalcFrame(MyFrame1):
         # label columns
         self.main_data_grid.SetColLabelValue(0, "Name")
         self.main_data_grid.SetColLabelValue(1, "Property Type")
-        self.main_data_grid.SetColLabelValue(2, "room Type")
+        self.main_data_grid.SetColLabelValue(2, "Room Type")
         self.main_data_grid.SetColLabelValue(3, "Bedrooms")
         self.main_data_grid.SetColLabelValue(4, "Bathrooms")
         self.main_data_grid.SetColLabelValue(5, "Occupants")
