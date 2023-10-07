@@ -9,7 +9,7 @@ def run_suburb_rating():
 
     # Clean up data (commas, Sydney, NSW, etc.)
     data['city'] = data['city'].str.strip()
-    data['city'] = data['city'].str.replace(',', '').str.replace(' Sydney', '').str.replace(' New South Wales AU', '').str.replace(' NSW', '')
+    data['city'] = data['city'].str.replace(',', '').str.replace(' Sydney', '').str.replace(' New South Wales AU', '').str.replace(' NSW', '').str.replace('9/20 botany street', 'Randwick')
     data['city'] = data['city'].str.lower().str.title()
     suburb_data = data['city'].astype(str).unique()
 

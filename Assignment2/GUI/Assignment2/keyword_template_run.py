@@ -7,6 +7,7 @@ def run_keyword_search():
     listing_data = pd.read_csv('listings_dec18.csv')
 
     merged_data = pd.merge(listing_data, review_data[['listing_id', 'comments']], left_on='id', right_on='listing_id', how='inner')
+    merged_data = merged_data.groupby('listing_id').first().reset_index()
 
     name = merged_data['name']
     property_type = merged_data['property_type']
@@ -53,18 +54,14 @@ def run_keyword_search():
         pattern = '|'.join('(?<![a-zA-Z])' + keyword + '(?![a-zA-Z])' for keyword in keywords)
         return merged_data['comments'].str.contains(pattern, case=False, na=False, regex=True)
 
-
-    cleanliness_filter = get_filter_for_keywords(cleanliness_keywords)
-    pool_filter = get_filter_for_keywords(pool_keywords)
-    parking_filter = get_filter_for_keywords(parking_keywords)
-    wifi_filter = get_filter_for_keywords(wifi_keywords)
-    air_conditioning_filter = get_filter_for_keywords(air_conditioning_keywords)
-
     from keyword_template import MyFrame4 as MyFrame1
 
     class CalcFrame(MyFrame1):
         def __init__(self, parent=None):
             super().__init__(parent)
+
+            self.Layout()
+            self.Show(True)
 
             # Column labels
             self.KS_grid.SetColLabelValue(0, "Name")
@@ -88,18 +85,23 @@ def run_keyword_search():
                 filtered_data = merged_data[keyword_filter]
 
             if self.KS_cleanliness_tick.IsChecked():
+                cleanliness_filter = get_filter_for_keywords(cleanliness_keywords)
                 filtered_data = filtered_data[cleanliness_filter]
 
             if self.KS_pool_tick.IsChecked():
+                pool_filter = get_filter_for_keywords(pool_keywords)
                 filtered_data = filtered_data[pool_filter]
 
             if self.KS_wifi_tick.IsChecked():
+                wifi_filter = get_filter_for_keywords(wifi_keywords)
                 filtered_data = filtered_data[wifi_filter]
 
             if self.KS_Parking_tick.IsChecked():
+                parking_filter = get_filter_for_keywords(parking_keywords)
                 filtered_data = filtered_data[parking_filter]
 
             if self.KS_ac_tick.IsChecked():
+                air_conditioning_filter = get_filter_for_keywords(air_conditioning_keywords)
                 filtered_data = filtered_data[air_conditioning_filter]
 
             self.KS_grid.DeleteRows(0, self.KS_grid.GetNumberRows(), True)
@@ -119,4 +121,3 @@ def run_keyword_search():
                 self.KS_grid.SetCellValue(i, 9, str(row['host_is_superhost']))
 
     return CalcFrame()
-

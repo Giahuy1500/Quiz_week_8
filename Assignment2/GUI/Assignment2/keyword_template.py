@@ -18,7 +18,7 @@ import wx.grid
 class MyFrame4 ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 947,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1460,770 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -112,10 +112,10 @@ class MyFrame4 ( wx.Frame ):
 
 		bSizer28 = wx.BoxSizer( wx.VERTICAL )
 
-		self.KS_grid = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.KS_grid = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size(1450, 650), 0 )
 
 		# Grid
-		self.KS_grid.CreateGrid( 20, 10 )
+		self.KS_grid.CreateGrid( 50, 10 )
 		self.KS_grid.EnableEditing( True )
 		self.KS_grid.EnableGridLines( True )
 		self.KS_grid.EnableDragGridSize( False )
@@ -134,7 +134,18 @@ class MyFrame4 ( wx.Frame ):
 
 		# Cell Defaults
 		self.KS_grid.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer28.Add( self.KS_grid, 0, wx.ALL, 5 )
+		bSizer28.Add( self.KS_grid, 0, wx.ALL, 5 )\
+
+		self.KS_grid.SetColSize(0, 250)
+		self.KS_grid.SetColSize(1, 150)
+		self.KS_grid.SetColSize(2, 75)
+		self.KS_grid.SetColSize(3, 75)
+		self.KS_grid.SetColSize(4, 75)
+		self.KS_grid.SetColSize(5, 65)
+		self.KS_grid.SetColSize(6, 65)
+		self.KS_grid.SetColSize(7, 250)
+		self.KS_grid.SetColSize(8, 250)
+		self.KS_grid.SetColSize(9, 75)
 
 
 		bSizer26.Add( bSizer28, 1, wx.EXPAND, 5 )

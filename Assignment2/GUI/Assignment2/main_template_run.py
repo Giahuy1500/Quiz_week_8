@@ -9,7 +9,6 @@ from keyword_template_run import run_keyword_search
 from suburb_specific_run import run_suburb_rating
 from main_template import MyFrame1
 
-
 listing_data = pd.read_csv('listings_dec18.csv')
 calendar_data = pd.read_csv('calendar_dec18.csv')
 
@@ -29,7 +28,6 @@ property_data_dropdown = [str(item) for item in property_data_dropdown]
 room_data = listing_data['room_type']
 room_data_dropdown = listing_data['room_type'].unique()
 room_data_dropdown = [str(item) for item in room_data_dropdown]
-
 
 class CalcFrame(MyFrame1):
     def __init__(self, parent=None):
@@ -188,7 +186,6 @@ class CalcFrame(MyFrame1):
             frame.Show()
         except Exception as e:
             wx.MessageBox(f"Error: {str(e)}", "Error", wx.OK | wx.ICON_ERROR)
-
 
 if __name__ == "__main__":
     app = wx.App(False)
